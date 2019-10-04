@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script type="text/javascript" src="javascript.js"></script>
+    <script type="text/javascript">
+        function save(){
+                sessionStorage.setItem("gt",grandtotal);
+                sessionStorage.arraylist = JSON.stringify(arraylist);
+                window.location.href = "checkout.html";
+        }  
+        function savemeal(){
+                sessionStorage.setItem("gt",grandtotal);
+                sessionStorage.arraylist = JSON.stringify(arraylist);
+                location.reload();
+        }   
+    </script>
+    <style>
+    .header {
+        color: rgb(211, 211, 14);
+        text-decoration: none;
+        font-size: 120%;
+        font-weight: bold;
+    }
+
+    a.header:link{
+        color: rgb(211, 211, 14);
+    }
+         
+    a.header:visited{
+        color: rgb(211, 211, 14);
+    }
+
+    a.header:hover {
+        background-color:rgb(211, 211, 14);
+        color: black;
+    }
+
+    a.header:active {
+        color: rgb(211, 211, 14);
+    }
+
+    section {
+        padding-top: 5%;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 150%;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    a.cart:hover {
+        background-color: white;
+    }
+
+    .abutton {
+        text-decoration: none;
+    }
+
+    ul {
+        position: absolute;
+        border: solid 3px black;
+    }
+    
+    li {
+        color:rgb(211, 211, 14);
+        font-size: 150%;
+    }
+
+    h4 {
+        position: relative;
+        font-size: 200%;
+        color: black;
+    }
+
+    input[type=number]{
+        width: 80px;
+    }
+
+    </style>
+</head>
+    <body id="top" onload="init()">
+        <header>
+            <div class="w3-top">
+                <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                  <a href="index.html" class="w3-bar-item w3-button"><img src="images/Logo.png" alt="logo" height="50" width="75"/></a>
+                  <!-- Float links to the right. Hide them on small screens -->
+                  <div class="w3-right w3-hide-small">
+                    <a href="index.html" class="w3-bar-item header">Home</a>
+                    <a href="javascript:savemeal()" class="w3-bar-item header">Meals</a>
+                    <a href="contact.html" class="w3-bar-item header">Contact</a>
+                    <a href="javascript:save()" class="w3-bar-item header">Checkout</a>
+                    <a href="meals.html#myList"><img src="images/redcart.png" alt="cart" height="50" width="60"></a>
+                    <button onclick="leave()">Clear Cart</button>
+                  </div>
+                </div>
+              </div>
+            </header>
+    <section>
+        <!--First Row-->
+        <br />
+        <h2 class="h2">Classic Meals</h2>
+        <!--Spaghetti-->
+        <div class="w3-main w3-content w3-padding">
+            <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+            <div class="w3-quarter">
+                <img src="images/pasta.jpeg" alt="Spaghetti" height="165" style="width:100%">
+                <h3>Spaghetti Bolognese</h3>
+                <h3>&dollar;5.99</h3>
+                <h6>Enter Quantity: <input type="number" min="1" max="25" id="spaghetti" size="4"><p id="spaghettiavailable"></p></h6>
+                <button onclick="checkspaghetti()">Check Availability</button>
+                <button onclick="addspag()">Add to Cart</button>
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+            
+            <!--Wrap-->
+            <div class="w3-quarter">
+                <img src="images/grilled.jpeg" alt="grilled" height="165" style="width:100%">
+                <h3>Grilled Chicken Wrap</h3>
+                <h3>&dollar;7.50</h3>
+                <h6>Enter Quantity: <input type="number" id="chicken" size="4"><p id="chickenavailable"></p></h6>
+                <button onclick="checkchicken()">Check Availability</button>
+                <button onclick="addwrap()">Add to Cart</button> 
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+
+            <!--Burger-->
+            <div class="w3-quarter">
+                <img src="images/burger.jpeg" alt="burger" height="165" style="width:100%">
+                <h3>Juicy Beef Burgers with Fries</h3>
+                <h3>&dollar;10.99</h3>
+                <h6>Enter Quantity: <input type="number" id="burger" size="4"><p id="burgeravailable"></p></h6>
+                <button onclick="checkburger()">Check Availability</button>
+                <button onclick="addburger()">Add to Cart</button>
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+
+            <!--Salmon-->
+            <div class="w3-quarter">
+                <img src="images/salmon.jpeg" alt="salmon" style="width:101%">
+                <h3>Grilled Salmon with Salad</h3>
+                <h3>&dollar;9.99</h3>
+                <h6>Enter Quantity: <input type="number" id="salmon" size="4"><p id="salmonavailable"></p></h6>
+                <button onclick="checksalmon();">Check Availability</button>
+                <button onclick="addsalmon()">Add to Cart</button>
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+        </div>
+        
+        <!--Second Row-->
+        <h2 class="h2">Vegetarian Meals</h2>
+        <!--Pizza-->
+        <div class="w3-row-padding w3-padding-16 w3-center">
+            <div class="w3-quarter">
+                <img src="images/pizza.jpeg" alt="pizza" height="165" style="width:100%">
+                <h3>20 Minute Pizza</h3>
+                <h3>&dollar;8.99</h3>
+                <h6>Enter Quantity: <input type="number" id="pizza" size="4"><p id="pizzaavailable"></p></h6>
+                <button onclick="checkpizza();">Check Availability</button>
+                <button onclick="addpizza()">Add to Cart</button>
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+            <!--Fries-->
+            <div class="w3-quarter">
+                <img src="images/parmfries.jpg" alt="salad" height="165" style="width:100%">
+                <h3 class="h3">Garlic Parmesan Fries</h3>
+                <h3>&dollar;4.50</h3>
+                <h6>Enter Quantity: <input type="number" id="fries" size="4"><p id="friesavailable"></p></h6>
+                <button onclick="checkfries();">Check Availability</button>
+                <button onclick="addfries()">Add to Cart</button>
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+            <!--Sandwich-->
+            <div class="w3-quarter">
+                <img src="images/caprese.jpg" alt="sandwich" height="165" style="width:100%">
+                <h3>Caprese Sandwich</h3>
+                <h3>&dollar;4.99</h3>
+                <h6>Enter Quantity: <input type="number" id="caprese" size="4"><p id="capreseavailable"></p></h6>
+                <button onclick="checkcaprese();">Check Availability</button>
+                <button onclick="addsandwich()">Add to Cart</button>
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+            <!--Veggie-->
+            <div class="w3-quarter">
+                <img src="images/veggieb.jpg" alt="veggie" height="165" style="width:100%">
+                <h3>Veggie Burger</h3>
+                <h3>&dollar;5.99</h3>
+                <h6>Enter Quantity: <input type="number" id="veggie" size="4"><p id="veggieavailable"></p></h6>
+                <button onclick="checkveggie();">Check Availability</button>
+                <button onclick="addveggie()">Add to Cart</button>
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+        </div>
+        
+        <!--Third Row-->
+        <h2 class="h2">Vegan Meals</h2>
+        <div class="w3-row-padding w3-padding-16 w3-center">
+            <!--Pasta-->
+            <div class="w3-quarter">
+                <img src="images/greenpasta.jpg" alt="pasta" height="165" style="width:100%">
+                <h3>Pesto Pasta w/ Tomatoes</h3>
+                <h3>&dollar;6.50</h3>
+                <h6>Enter Quantity: <input type="number" id="pasta" size="4"><p id="pastaavailable"></p></h6>
+                <button onclick="checkpasta();">Check Availability</button>
+                <button onclick="addpasta()">Add to Cart</button>
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+            <!--Salad-->
+            <div class="w3-quarter">
+                <img src="images/salad.jpeg" alt="salad" height="165" style="width:100%">
+                <h3>Leafy Green Salad w/ Vegetables</h3>
+                <h3>&dollar;4.50</h3>
+                <h6>Enter Quantity: <input type="number" id="salad" size="4"><p id="saladavailable"></p></h6>
+                <button onclick="checksalad();">Check Availability</button>
+                <button onclick="addsalad()">Add to Cart</button>
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+            <!--Soup-->
+            <div class="w3-quarter">
+                <img src="images/tomato.jpeg" alt="tomato" height="165" style="width:100%">
+                <h3>Creamy Tomato Soup</h3>
+                <h3>&dollar;4.99</h3>
+                <h6>Enter Quantity: <input type="number" id="soup" size="4"><p id="soupavailable"></p></h6>
+                <button onclick="checksoup();">Check Availability</button>
+                <button onclick="addsoup()">Add to Cart</button>
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+            <!--Curry-->
+            <div class="w3-quarter">
+                <img src="images/curry.jpeg" alt="curry" height="165" style="width:100%">
+                <h3 class="space">White Rice w/ Curry</h3>
+                <h3>&dollar;5.99</h3>
+                <h6>Enter Quantity: <input type="number" id="curry" size="4"><p id="curryavailable"></p></h6>
+                <button onclick="checkcurry();">Check Availability</button>
+                <button onclick="addcurry()">Add to Cart</button>
+                <button><a href="#myList">Go to Cart</a></button>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div>
+            <ul id="myList"><h4>Shopping Cart</h4>
+                <button type="button" onclick="save();"><a class="abutton" href="checkout.html">Go to Checkout</a></button>
+                <button type="button"><a class="abutton" href="#top">Continue Shopping</a></button>
+                <button type="button" onclick="leave()">Clear Cart</button>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <p id="grand"></p>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>
